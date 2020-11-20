@@ -1,1 +1,29 @@
-
+int main(void)
+{
+    //Get integers between 1 and 8 
+    int n;
+    do
+    {
+        n = get_int("Height: ");
+    }
+    while (n < 1 || n > 8);
+    while (n < 1 || n > 8);
+    
+    // Create Rows
+    for (int r = 0; r < n; r++)
+    {
+        // Create Spaces 
+        for (int s = n - r - 2; s >= 0; s--)
+        {
+            printf(" ");
+        }
+        //Create '#'s
+        for (int k = 0; k <= r; k++)
+        {
+            printf("#");
+        }
+        // Go one line down
+        printf("\n");
+    }
+    return 0;
+}

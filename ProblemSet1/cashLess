@@ -1,0 +1,79 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+
+//Negative until proven positive
+float askPositiveFloat(void)
+{
+    float positiveFloat;
+    bool negative = true;
+
+//If number is positive set to false
+    while (negative)
+    {
+        positiveFloat = get_float("Change owed: ");
+    
+        if (positiveFloat > 0)
+        {
+            negative = false;
+        }
+    }
+
+    return positiveFloat;
+}
+
+//Track coin numbers to return as integer...not float
+int coinNumber()
+{
+    int totalCents = round(askPositiveFloat() * 100);
+    int numberOfCoins = 0;
+    int remainder;
+    int tempNumber;
+
+    //Variables storing coin values
+    int q = 25;
+    int d = 10;
+    int n = 5;
+    int p = 1;
+    
+    //If total of cents is greater than or equal to value of each coin 
+    if (totalCents >= q)
+    {
+        remainder = totalCents % q;
+        tempNumber = totalCents - remainder;
+        numberOfCoins = numberOfCoins + (tempNumber / q);
+        totalCents = remainder;
+    }
+    
+    if (totalCents >= d)
+    {
+        remainder = totalCents % d;
+        tempNumber = totalCents - remainder;
+        numberOfCoins = numberOfCoins + (tempNumber / d);
+        totalCents = remainder;
+    }
+    
+    if (totalCents >= n)
+    {
+        remainder = totalCents % n;
+        tempNumber = totalCents - remainder;
+        numberOfCoins = numberOfCoins + (tempNumber / n);
+        totalCents = remainder;
+    }
+    
+    if (totalCents >= p)
+    {
+        remainder = totalCents % p;
+        tempNumber = totalCents - remainder;
+        numberOfCoins = numberOfCoins + (tempNumber / p);
+        totalCents = remainder;
+    }
+    
+    return numberOfCoins;
+}
+
+//Print 
+int main(void)
+{
+    printf("%i\n", coinNumber());
+}
